@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nanonicoins Hub</title>
+  <title>Nanonicorp Hub</title>
 
   <style>
     *{
@@ -23,31 +23,29 @@
       overflow-x:hidden;
     }
 
-    /* 🌧️ CHUVA VERMELHA SUTIL */
+    /* 🔥 CHUVA VERMELHA VISÍVEL MAS PREMIUM */
     .rain{
       position:fixed;
       inset:0;
       pointer-events:none;
       z-index:0;
-      opacity:.18;
-
+      opacity:.28;
       background-image:
-        linear-gradient(to bottom, rgba(255,40,40,0), rgba(255,40,40,.15), rgba(255,40,40,0)),
-        linear-gradient(to bottom, rgba(255,60,60,0), rgba(255,60,60,.10), rgba(255,60,60,0)),
-        linear-gradient(to bottom, rgba(255,30,30,0), rgba(255,30,30,.12), rgba(255,30,30,0));
-
-      background-size: 1px 160px, 1px 200px, 1px 240px;
+        linear-gradient(to bottom, rgba(255,40,40,0), rgba(255,40,40,.18), rgba(255,40,40,0)),
+        linear-gradient(to bottom, rgba(255,70,70,0), rgba(255,70,70,.12), rgba(255,70,70,0)),
+        linear-gradient(to bottom, rgba(255,30,30,0), rgba(255,30,30,.15), rgba(255,30,30,0)),
+        linear-gradient(to bottom, rgba(255,90,90,0), rgba(255,90,90,.08), rgba(255,90,90,0));
+      background-size: 1px 140px, 1px 180px, 1px 220px, 1px 260px;
       background-repeat: repeat-y;
-
-      animation: rainMove 6s linear infinite;
+      animation: rainMove 4.8s linear infinite;
     }
 
     @keyframes rainMove{
       0%{
-        background-position: 10% -200px, 40% -300px, 75% -250px;
+        background-position: 8% -220px, 31% -320px, 57% -260px, 83% -340px;
       }
       100%{
-        background-position: 10% 800px, 40% 900px, 75% 850px;
+        background-position: 8% 900px, 31% 980px, 57% 940px, 83% 1020px;
       }
     }
 
@@ -118,8 +116,7 @@
       border:1px solid rgba(255,255,255,.08);
     }
 
-    .card img,
-    .card video{
+    .card img{
       position:absolute;
       inset:0;
       width:100%;
@@ -168,7 +165,6 @@
 
 <body>
 
-  <!-- chuva -->
   <div class="rain"></div>
 
   <main class="wrap">
@@ -180,14 +176,12 @@
       <div>
         <div class="eyebrow">Nanonicoins</div>
         <div class="title">Hub Oficial</div>
-        <div class="subtitle">Minimalista, premium e pronto para seus cartões.</div>
+        <div class="subtitle">NanoniCoins ◆ Free ◆ Founder Acess ◆ Redes Sociais.</div>
       </div>
     </section>
 
     <section class="hero-shell">
       <div class="stack">
-
-        <!-- 🔥 AGORA COMEÇA DIRETO NOS CARDS QUE VOCÊ VAI USAR -->
 
         <a class="card" href="https://lading-free.vercel.app/">
           <img src="assets/free-cover.jpg">
