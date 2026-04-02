@@ -7,19 +7,21 @@
   <meta name="description" content="Nanonicoins Radar FREE e Nanonicoins VIP Founder Access." />
   <style>
     :root{
-      --bg:#f5f5f5;
-      --panel:#ffffff;
-      --text:#0b0b0b;
-      --muted:rgba(0,0,0,.56);
-      --muted-2:rgba(0,0,0,.34);
-      --border:rgba(0,0,0,.07);
-      --shadow:0 16px 40px rgba(0,0,0,.08);
+      --bg:#050505;
+      --bg-2:#0a0a0a;
+      --panel:rgba(255,255,255,.045);
+      --panel-2:rgba(255,255,255,.065);
+      --border:rgba(255,255,255,.11);
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.66);
+      --muted-2:rgba(255,255,255,.38);
+      --shadow:0 24px 80px rgba(0,0,0,.45);
 
       --green:#39d353;
-      --green-soft:rgba(57,211,83,.14);
+      --green-soft:rgba(57,211,83,.18);
 
       --red:#ff3045;
-      --red-soft:rgba(255,48,69,.14);
+      --red-soft:rgba(255,48,69,.18);
     }
 
     *{
@@ -36,9 +38,11 @@
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color:var(--text);
       background:
-        radial-gradient(circle at 12% 10%, rgba(57,211,83,.08), transparent 22%),
-        radial-gradient(circle at 88% 16%, rgba(255,48,69,.08), transparent 24%),
-        linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+        radial-gradient(circle at 14% 10%, rgba(57,211,83,.10), transparent 22%),
+        radial-gradient(circle at 86% 12%, rgba(255,48,69,.11), transparent 24%),
+        radial-gradient(circle at 50% 120%, rgba(255,255,255,.035), transparent 28%),
+        linear-gradient(180deg, #040404 0%, #090909 55%, #050505 100%);
+      overflow-x:hidden;
     }
 
     a{
@@ -47,12 +51,40 @@
     }
 
     .wrap{
-      width:min(760px, calc(100% - 28px));
+      width:min(780px, calc(100% - 28px));
       margin:0 auto;
-      padding:24px 0 40px;
+      padding:22px 0 42px;
+      position:relative;
+    }
+
+    .glow{
+      position:fixed;
+      border-radius:999px;
+      filter:blur(80px);
+      pointer-events:none;
+      z-index:0;
+      opacity:.7;
+    }
+
+    .glow.g1{
+      width:260px;
+      height:260px;
+      left:-80px;
+      top:80px;
+      background:rgba(57,211,83,.10);
+    }
+
+    .glow.g2{
+      width:320px;
+      height:320px;
+      right:-100px;
+      top:120px;
+      background:rgba(255,48,69,.11);
     }
 
     .top{
+      position:relative;
+      z-index:2;
       display:flex;
       align-items:center;
       gap:14px;
@@ -60,28 +92,30 @@
     }
 
     .top-logo{
-      width:58px;
-      height:58px;
-      border-radius:18px;
-      background:#0d0d0d;
+      width:64px;
+      height:64px;
+      border-radius:20px;
+      border:1px solid var(--border);
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      box-shadow:0 14px 36px rgba(0,0,0,.26);
       display:grid;
       place-items:center;
-      box-shadow:0 10px 24px rgba(0,0,0,.10);
       overflow:hidden;
       flex:0 0 auto;
     }
 
     .top-logo img{
-      width:40px;
-      height:40px;
+      width:44px;
+      height:44px;
       object-fit:contain;
-      transform:scale(1.12);
+      transform:scale(1.18);
+      display:block;
     }
 
     .eyebrow{
-      margin:0 0 4px;
+      margin:0 0 5px;
       font-size:11px;
-      letter-spacing:.32em;
+      letter-spacing:.34em;
       text-transform:uppercase;
       color:var(--muted-2);
       font-weight:800;
@@ -89,9 +123,9 @@
 
     .title{
       margin:0;
-      font-size:32px;
+      font-size:34px;
       line-height:.95;
-      letter-spacing:-.05em;
+      letter-spacing:-.06em;
       font-weight:900;
     }
 
@@ -100,75 +134,93 @@
       color:var(--muted);
       font-size:14px;
       line-height:1.7;
+      max-width:560px;
     }
 
-    .hero{
-      background:var(--panel);
+    .hero-shell{
+      position:relative;
+      z-index:2;
+      padding:16px;
+      border-radius:34px;
       border:1px solid var(--border);
-      border-radius:30px;
+      background:linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.03));
       box-shadow:var(--shadow);
-      padding:18px;
-      margin-bottom:18px;
+      backdrop-filter:blur(18px);
+      overflow:hidden;
+    }
+
+    .hero-shell::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 16% 12%, rgba(57,211,83,.08), transparent 18%),
+        radial-gradient(circle at 84% 14%, rgba(255,48,69,.09), transparent 18%);
+      pointer-events:none;
     }
 
     .hero-grid{
       display:grid;
       grid-template-columns:1fr;
       gap:14px;
+      position:relative;
+      z-index:2;
     }
 
-    .video-card{
+    .hero-card{
       position:relative;
-      min-height:220px;
-      border-radius:28px;
+      min-height:250px;
+      border-radius:30px;
       overflow:hidden;
-      border:1px solid rgba(0,0,0,.06);
-      box-shadow:0 14px 34px rgba(0,0,0,.08);
+      border:1px solid rgba(255,255,255,.09);
       background:#0a0a0a;
+      box-shadow:0 18px 48px rgba(0,0,0,.30);
       isolation:isolate;
     }
 
-    .video-card video{
+    .hero-card video{
       position:absolute;
       inset:0;
       width:100%;
       height:100%;
       object-fit:cover;
       display:block;
-      transform:scale(1.02);
+      transform:scale(1.03);
+      filter:saturate(1.06) contrast(1.04);
     }
 
-    .video-card::after{
+    .hero-card::after{
       content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(to top, rgba(0,0,0,.82) 6%, rgba(0,0,0,.42) 42%, rgba(0,0,0,.10) 74%);
-      z-index:1;
-    }
-
-    .video-card.free::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(circle at 50% 42%, rgba(57,211,83,.22), transparent 32%),
-        linear-gradient(135deg, rgba(57,211,83,.16), transparent 40%);
+      background:linear-gradient(to top, rgba(0,0,0,.88) 8%, rgba(0,0,0,.48) 42%, rgba(0,0,0,.14) 72%);
       z-index:1;
       pointer-events:none;
     }
 
-    .video-card.vip::before{
+    .hero-card.free::before{
       content:"";
       position:absolute;
       inset:0;
       background:
-        radial-gradient(circle at 50% 42%, rgba(255,48,69,.24), transparent 34%),
-        linear-gradient(135deg, rgba(255,48,69,.16), transparent 40%);
+        radial-gradient(circle at 55% 38%, rgba(57,211,83,.23), transparent 30%),
+        linear-gradient(135deg, rgba(57,211,83,.16), transparent 34%, transparent 66%, rgba(57,211,83,.08));
       z-index:1;
       pointer-events:none;
     }
 
-    .card-content{
+    .hero-card.vip::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 55% 38%, rgba(255,48,69,.23), transparent 30%),
+        linear-gradient(135deg, rgba(255,48,69,.16), transparent 34%, transparent 66%, rgba(255,48,69,.08));
+      z-index:1;
+      pointer-events:none;
+    }
+
+    .hero-content{
       position:relative;
       z-index:2;
       height:100%;
@@ -176,109 +228,135 @@
       flex-direction:column;
       justify-content:flex-end;
       padding:18px;
-      color:#fff;
     }
 
-    .card-topline{
+    .hero-topline{
       font-size:10px;
       letter-spacing:.28em;
       text-transform:uppercase;
-      color:rgba(255,255,255,.58);
       font-weight:800;
+      color:rgba(255,255,255,.56);
       margin-bottom:8px;
     }
 
-    .card-row{
+    .hero-row{
       display:flex;
       align-items:flex-end;
       justify-content:space-between;
       gap:14px;
     }
 
-    .card-left{
+    .hero-left{
       display:flex;
       align-items:center;
       gap:14px;
       min-width:0;
     }
 
-    .card-logo{
-      width:66px;
-      height:66px;
-      border-radius:18px;
-      background:rgba(255,255,255,.11);
-      border:1px solid rgba(255,255,255,.16);
+    .hero-logo{
+      width:72px;
+      height:72px;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.09);
+      backdrop-filter:blur(10px);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.10),
+        0 8px 20px rgba(0,0,0,.18);
       display:grid;
       place-items:center;
-      backdrop-filter:blur(10px);
       overflow:hidden;
       flex:0 0 auto;
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.10);
     }
 
-    .card-logo img{
-      width:52px;
-      height:52px;
+    .hero-logo img{
+      width:56px;
+      height:56px;
       object-fit:contain;
-      transform:scale(1.28);
+      transform:scale(1.34);
       display:block;
     }
 
-    .card-title{
+    .hero-title{
       margin:0;
-      font-size:30px;
+      font-size:32px;
       line-height:.95;
-      letter-spacing:-.05em;
+      letter-spacing:-.06em;
       font-weight:900;
       color:#fff;
     }
 
-    .card-sub{
+    .hero-sub{
       margin:8px 0 0;
-      color:rgba(255,255,255,.78);
+      color:rgba(255,255,255,.80);
       font-size:14px;
       line-height:1.55;
     }
 
-    .arrow{
-      width:50px;
-      height:50px;
+    .hero-arrow{
+      width:52px;
+      height:52px;
       border-radius:999px;
-      background:rgba(255,255,255,.12);
-      border:1px solid rgba(255,255,255,.16);
-      display:grid;
-      place-items:center;
+      border:1px solid rgba(255,255,255,.15);
+      background:rgba(255,255,255,.10);
+      backdrop-filter:blur(8px);
       color:#fff;
       font-size:20px;
-      font-weight:700;
+      display:grid;
+      place-items:center;
       flex:0 0 auto;
-      backdrop-filter:blur(8px);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
     }
 
     .links{
+      position:relative;
+      z-index:2;
+      margin-top:16px;
       display:grid;
       gap:14px;
     }
 
     .link-btn{
+      position:relative;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:14px;
-      min-height:92px;
+      min-height:94px;
       padding:16px;
-      background:var(--panel);
+      border-radius:28px;
       border:1px solid var(--border);
-      border-radius:26px;
-      box-shadow:var(--shadow);
+      background:linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.035));
+      box-shadow:0 16px 36px rgba(0,0,0,.22);
+      backdrop-filter:blur(16px);
+      overflow:hidden;
       transition:.18s ease;
     }
 
     .link-btn:hover{
       transform:translateY(-2px);
+      box-shadow:0 22px 48px rgba(0,0,0,.28);
+    }
+
+    .link-btn.free-link::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg, rgba(57,211,83,.11), transparent 34%, transparent 66%, rgba(57,211,83,.05));
+      pointer-events:none;
+    }
+
+    .link-btn.vip-link::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg, rgba(255,48,69,.11), transparent 34%, transparent 66%, rgba(255,48,69,.05));
+      pointer-events:none;
     }
 
     .link-left{
+      position:relative;
+      z-index:2;
       display:flex;
       align-items:center;
       gap:14px;
@@ -286,32 +364,24 @@
     }
 
     .mini-logo{
-      width:56px;
-      height:56px;
+      width:58px;
+      height:58px;
       border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.08);
       display:grid;
       place-items:center;
       overflow:hidden;
       flex:0 0 auto;
-      border:1px solid rgba(0,0,0,.06);
-      background:#fff;
+      backdrop-filter:blur(10px);
     }
 
     .mini-logo img{
-      width:42px;
-      height:42px;
+      width:44px;
+      height:44px;
       object-fit:contain;
-      transform:scale(1.18);
+      transform:scale(1.22);
       display:block;
-    }
-
-    .mini-logo.dark{
-      background:#0d0d0d;
-      border-color:rgba(0,0,0,.08);
-    }
-
-    .mini-logo.dark img{
-      filter:none;
     }
 
     .link-over{
@@ -319,7 +389,7 @@
       letter-spacing:.24em;
       text-transform:uppercase;
       font-weight:800;
-      color:var(--muted-2);
+      color:rgba(255,255,255,.40);
       margin-bottom:6px;
     }
 
@@ -328,7 +398,7 @@
       line-height:1;
       letter-spacing:-.04em;
       font-weight:900;
-      color:#111;
+      color:#fff;
     }
 
     .link-sub{
@@ -339,30 +409,32 @@
     }
 
     .link-arrow{
-      width:42px;
-      height:42px;
+      position:relative;
+      z-index:2;
+      width:44px;
+      height:44px;
       border-radius:999px;
       display:grid;
       place-items:center;
-      border:1px solid rgba(0,0,0,.08);
-      background:#fff;
-      color:#111;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.08);
+      color:#fff;
       font-size:18px;
       flex:0 0 auto;
     }
 
     .social{
-      margin-top:18px;
+      position:relative;
+      z-index:2;
+      margin-top:16px;
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:14px;
     }
 
-    .social .link-btn{
-      min-height:88px;
-    }
-
     .footer-note{
+      position:relative;
+      z-index:2;
       text-align:center;
       margin-top:16px;
       color:var(--muted);
@@ -372,51 +444,59 @@
 
     @media (max-width: 640px){
       .wrap{
-        width:min(100% - 18px, 760px);
-        padding-top:16px;
+        width:min(100%, calc(100% - 16px));
+        padding-top:14px;
       }
 
       .title{
         font-size:28px;
       }
 
-      .video-card{
-        min-height:210px;
+      .hero-shell{
+        padding:12px;
+        border-radius:28px;
+      }
+
+      .hero-card{
+        min-height:220px;
         border-radius:24px;
       }
 
-      .card-logo{
-        width:58px;
-        height:58px;
+      .hero-logo{
+        width:62px;
+        height:62px;
       }
 
-      .card-logo img{
+      .hero-logo img{
+        width:48px;
+        height:48px;
+      }
+
+      .hero-title{
+        font-size:26px;
+      }
+
+      .hero-arrow{
         width:46px;
         height:46px;
       }
 
-      .card-title{
-        font-size:25px;
-      }
-
-      .arrow{
-        width:46px;
-        height:46px;
+      .link-btn{
+        min-height:88px;
+        border-radius:22px;
       }
 
       .social{
         grid-template-columns:1fr;
       }
-
-      .link-btn{
-        border-radius:22px;
-      }
     }
   </style>
 </head>
 <body>
-  <main class="wrap">
+  <div class="glow g1"></div>
+  <div class="glow g2"></div>
 
+  <main class="wrap">
     <section class="top">
       <div class="top-logo">
         <img src="assets/logo-main.png" alt="Nanonicoins logo" />
@@ -424,64 +504,62 @@
       <div>
         <p class="eyebrow">Nanonicoins</p>
         <h1 class="title">Hub Oficial</h1>
-        <p class="desc">FREE e VIP com identidade forte, vídeo integrado e acesso direto.</p>
+        <p class="desc">Acesso direto ao FREE, Founder Access e canais oficiais.</p>
       </div>
     </section>
 
-    <section class="hero">
+    <section class="hero-shell">
       <div class="hero-grid">
-
-        <a class="video-card free" href="https://t.me/+pR5RzyPgUKY2NDZh" target="_blank" rel="noopener noreferrer">
+        <a class="hero-card free" href="https://t.me/+pR5RzyPgUKY2NDZh" target="_blank" rel="noopener noreferrer">
           <video autoplay muted loop playsinline poster="assets/free-poster.jpg">
             <source src="assets/free-video.mp4" type="video/mp4" />
           </video>
 
-          <div class="card-content">
-            <div class="card-topline">Nanonicoins Radar</div>
-            <div class="card-row">
-              <div class="card-left">
-                <div class="card-logo">
+          <div class="hero-content">
+            <div class="hero-topline">Nanonicoins Radar</div>
+            <div class="hero-row">
+              <div class="hero-left">
+                <div class="hero-logo">
                   <img src="assets/logo-free.png" alt="Logo FREE" />
                 </div>
                 <div>
-                  <h2 class="card-title">FREE</h2>
-                  <div class="card-sub">Veja o radar funcionando ao vivo.</div>
+                  <h2 class="hero-title">FREE</h2>
+                  <div class="hero-sub">Veja o radar funcionando ao vivo.</div>
                 </div>
               </div>
-              <div class="arrow">→</div>
+              <div class="hero-arrow">→</div>
             </div>
           </div>
         </a>
 
-        <a class="video-card vip" href="https://payment.ticto.app/O64599EB6" target="_blank" rel="noopener noreferrer">
+        <a class="hero-card vip" href="https://payment.ticto.app/O64599EB6" target="_blank" rel="noopener noreferrer">
           <video autoplay muted loop playsinline poster="assets/vip-poster.jpg">
             <source src="assets/vip-video.mp4" type="video/mp4" />
           </video>
 
-          <div class="card-content">
-            <div class="card-topline">Nanonicoins VIP</div>
-            <div class="card-row">
-              <div class="card-left">
-                <div class="card-logo">
+          <div class="hero-content">
+            <div class="hero-topline">Nanonicoins VIP</div>
+            <div class="hero-row">
+              <div class="hero-left">
+                <div class="hero-logo">
                   <img src="assets/logo-vip.png" alt="Logo VIP" />
                 </div>
                 <div>
-                  <h2 class="card-title">Founder Access</h2>
-                  <div class="card-sub">Entre antes da maioria.</div>
+                  <h2 class="hero-title">Founder Access</h2>
+                  <div class="hero-sub">Entre antes da maioria.</div>
                 </div>
               </div>
-              <div class="arrow">→</div>
+              <div class="hero-arrow">→</div>
             </div>
           </div>
         </a>
-
       </div>
     </section>
 
     <section class="links">
-      <a class="link-btn" href="https://lading-free.vercel.app/" target="_blank" rel="noopener noreferrer">
+      <a class="link-btn free-link" href="https://lading-free.vercel.app/" target="_blank" rel="noopener noreferrer">
         <div class="link-left">
-          <div class="mini-logo dark">
+          <div class="mini-logo">
             <img src="assets/logo-free.png" alt="Logo FREE" />
           </div>
           <div>
@@ -493,9 +571,9 @@
         <div class="link-arrow">→</div>
       </a>
 
-      <a class="link-btn" href="https://nanonicoins-vip.vercel.app/" target="_blank" rel="noopener noreferrer">
+      <a class="link-btn vip-link" href="https://nanonicoins-vip.vercel.app/" target="_blank" rel="noopener noreferrer">
         <div class="link-left">
-          <div class="mini-logo dark">
+          <div class="mini-logo">
             <img src="assets/logo-vip.png" alt="Logo VIP" />
           </div>
           <div>
@@ -541,7 +619,6 @@
     <div class="footer-note">
       Nanonicoins Radar FREE • Nanonicoins VIP Founder Access
     </div>
-
   </main>
 </body>
 </html>
