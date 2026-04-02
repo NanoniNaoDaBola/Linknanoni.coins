@@ -25,19 +25,46 @@
 
     /* 🔥 CHUVA VERMELHA VISÍVEL MAS PREMIUM */
     .rain{
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      z-index:0;
-      opacity:.38;
-      background-image:
-        linear-gradient(to bottom, rgba(255,40,40,0), rgba(255,40,40,.18), rgba(255,40,40,0)),
-        linear-gradient(to bottom, rgba(255,70,70,0), rgba(255,70,70,.12), rgba(255,70,70,0)),
-        linear-gradient(to bottom, rgba(255,30,30,0), rgba(255,30,30,.15), rgba(255,30,30,0)),
-        linear-gradient(to bottom, rgba(255,90,90,0), rgba(255,90,90,.08), rgba(255,90,90,0));
-      background-size: 1px 140px, 1px 180px, 1px 220px, 1px 260px;
-      background-repeat: repeat-y;
-      animation: rainMove 4.2s linear infinite;
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  opacity:.35;
+
+  background-image:
+    linear-gradient(to bottom, rgba(255,40,40,0), rgba(255,40,40,.25), rgba(255,40,40,0)),
+    linear-gradient(to bottom, rgba(255,60,60,0), rgba(255,60,60,.18), rgba(255,60,60,0)),
+    linear-gradient(to bottom, rgba(255,30,30,0), rgba(255,30,30,.22), rgba(255,30,30,0)),
+    linear-gradient(to bottom, rgba(255,90,90,0), rgba(255,90,90,.14), rgba(255,90,90,0)),
+    linear-gradient(to bottom, rgba(255,50,50,0), rgba(255,50,50,.16), rgba(255,50,50,0)),
+    linear-gradient(to bottom, rgba(255,70,70,0), rgba(255,70,70,.12), rgba(255,70,70,0)),
+    linear-gradient(to bottom, rgba(255,40,40,0), rgba(255,40,40,.20), rgba(255,40,40,0)),
+    linear-gradient(to bottom, rgba(255,80,80,0), rgba(255,80,80,.10), rgba(255,80,80,0));
+
+  background-size:
+    2px 140px,
+    2px 160px,
+    2px 180px,
+    2px 200px,
+    2px 220px,
+    2px 240px,
+    2px 260px,
+    2px 300px;
+
+  background-position:
+    5% -200px,
+    12% -300px,
+    20% -250px,
+    32% -280px,
+    48% -320px,
+    62% -260px,
+    78% -300px,
+    90% -280px;
+
+  background-repeat: repeat-y;
+
+  animation: rainMove 4.5s linear infinite;
+}
     }
 
     @keyframes rainMove{
