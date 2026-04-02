@@ -1,257 +1,685 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nanonicoins Hub</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nanonicoins Hub — FREE + VIP</title>
+  <meta name="description" content="Hub oficial do Nanonicoins Radar. Acesso ao FREE, VIP Founder Access, Instagram, TikTok e links principais." />
+  <style>
+    :root {
+      --bg: #040404;
+      --bg-2: #0a0a0a;
+      --panel: rgba(255,255,255,.06);
+      --panel-strong: rgba(255,255,255,.09);
+      --border: rgba(255,255,255,.12);
+      --text: #0a0a0a;
+      --muted: rgba(0,0,0,.64);
+      --muted-2: rgba(0,0,0,.42);
 
-<style>
-*{
-  box-sizing:border-box;
-}
+      --free-1: #22c55e;
+      --free-2: #4ade80;
+      --free-soft: rgba(34,197,94,.18);
 
-body{
-  margin:0;
-  font-family: Inter, sans-serif;
-  background:
-    radial-gradient(circle at 20% 10%, rgba(57,211,83,.08), transparent 30%),
-    radial-gradient(circle at 80% 10%, rgba(255,48,69,.08), transparent 30%),
-    #0b0b0b;
-  color:#fff;
-}
+      --vip-1: #ff1e2d;
+      --vip-2: #ff4d4d;
+      --vip-soft: rgba(255,30,45,.18);
 
-.container{
-  max-width:520px;
-  margin:auto;
-  padding:20px 14px 40px;
-}
+      --shadow: 0 20px 80px rgba(0,0,0,.45);
+      --radius: 30px;
+      --max: 760px;
+    }
 
-.header{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-bottom:18px;
-}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
-.logo{
-  width:54px;
-  height:54px;
-  border-radius:16px;
-  background:#111;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:1px solid rgba(255,255,255,.08);
-}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 16% 10%, rgba(34,197,94,.08), transparent 24%),
+        radial-gradient(circle at 86% 14%, rgba(255,30,45,.08), transparent 26%),
+        radial-gradient(circle at 50% 60%, rgba(0,0,0,.02), transparent 35%),
+        linear-gradient(180deg, #ffffff 0%, #fbfbfb 45%, #f5f5f5 100%);
+      overflow-x: hidden;
+    }
 
-.logo img{
-  width:38px;
-}
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
 
-.title{
-  font-size:22px;
-  font-weight:900;
-  letter-spacing:-0.03em;
-}
+    .bg-orb {
+      position: fixed;
+      border-radius: 999px;
+      filter: blur(70px);
+      pointer-events: none;
+      opacity: .65;
+      z-index: 0;
+    }
 
-.subtitle{
-  font-size:12px;
-  color:rgba(255,255,255,.5);
-}
+    .orb-free {
+      width: 340px;
+      height: 340px;
+      left: -80px;
+      top: 80px;
+      background: rgba(16,185,129,.22);
+    }
 
-/* CARD */
+    .orb-vip {
+      width: 380px;
+      height: 380px;
+      right: -110px;
+      top: 180px;
+      background: rgba(215,15,28,.20);
+    }
 
-.card{
-  position:relative;
-  height:140px;
-  border-radius:26px;
-  overflow:hidden;
-  margin-bottom:14px;
-  cursor:pointer;
-  border:1px solid rgba(255,255,255,.08);
-}
+    .wrap {
+      position: relative;
+      z-index: 1;
+      width: min(var(--max), calc(100% - 28px));
+      margin: 0 auto;
+      padding: 34px 0 48px;
+    }
 
-.card img,
-.card video{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
+    .hero-clean {
+      position: relative;
+      margin-bottom: 18px;
+    }
 
-/* overlay dark */
-.card::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(to right, rgba(0,0,0,.65), rgba(0,0,0,.15));
-}
+    .hero-surface {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      border: 1px solid rgba(0,0,0,.08);
+      background: linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+      box-shadow: 0 18px 60px rgba(0,0,0,.08);
+      padding: 22px;
+    }
 
-/* glow */
-.card.free::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle at 20% 50%, rgba(57,211,83,.25), transparent 60%);
-}
+    .hero-topline {
+      font-size: 11px;
+      letter-spacing: .34em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,.42);
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
 
-.card.vip::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle at 20% 50%, rgba(255,48,69,.25), transparent 60%);
-}
+    .hero-title-main {
+      margin: 0;
+      font-size: clamp(30px, 7vw, 54px);
+      line-height: .94;
+      letter-spacing: -.06em;
+      color: #0a0a0a;
+      font-weight: 900;
+    }
 
-.content{
-  position:absolute;
-  z-index:2;
-  left:18px;
-  bottom:18px;
-}
+    .hero-subtitle {
+      margin: 12px 0 0;
+      color: rgba(0,0,0,.62);
+      font-size: 15px;
+      line-height: 1.7;
+      max-width: 560px;
+    }
 
-.label{
-  font-size:10px;
-  letter-spacing:.25em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,.6);
-  margin-bottom:6px;
-}
+    .hero-duo {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
 
-.name{
-  font-size:22px;
-  font-weight:900;
-}
+    .hero-access {
+      position: relative;
+      overflow: hidden;
+      min-height: 300px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: #0b0b0b;
+      box-shadow: 0 18px 50px rgba(0,0,0,.18);
+      isolation: isolate;
+    }
 
-.arrow{
-  position:absolute;
-  right:16px;
-  bottom:16px;
-  width:38px;
-  height:38px;
-  border-radius:999px;
-  background:rgba(255,255,255,.1);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:18px;
-}
+    .hero-access:hover {
+      transform: translateY(-2px);
+      transition: .2s ease;
+    }
 
-/* SOCIAL */
+    .hero-video-bg {
+      position: absolute;
+      inset: 0;
+      background: #080808;
+    }
 
-.social{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-  margin-top:10px;
-}
+    .hero-video-bg video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.08) contrast(1.06);
+    }
 
-.social .card{
-  height:100px;
-}
+    .hero-fx {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
 
-.small{
-  font-size:16px;
-}
+    .hero-fx-free {
+      background:
+        radial-gradient(circle at 50% 40%, rgba(34,197,94,.18), transparent 34%),
+        linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.55) 68%, rgba(0,0,0,.82));
+    }
 
-</style>
+    .hero-fx-vip {
+      background:
+        radial-gradient(circle at 50% 40%, rgba(255,30,45,.20), transparent 34%),
+        linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.58) 68%, rgba(0,0,0,.86));
+    }
+
+    .hero-access-content {
+      position: absolute;
+      inset: auto 0 0 0;
+      z-index: 2;
+      padding: 18px;
+      color: #fff;
+    }
+
+    .hero-access-logo {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.08);
+      display: grid;
+      place-items: center;
+      margin-bottom: 14px;
+      backdrop-filter: blur(8px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+    }
+
+    .hero-access-logo img {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+    }
+
+    .hero-access-over {
+      font-size: 10px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.56);
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .hero-access-title {
+      font-size: 26px;
+      line-height: 1;
+      letter-spacing: -.05em;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    .hero-access-text {
+      margin-top: 8px;
+      color: rgba(255,255,255,.78);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .hero-access-cta {
+      margin-top: 14px;
+      display: inline-flex;
+      align-items: center;
+      min-height: 42px;
+      padding: 0 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.12);
+      color: #fff;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-top {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .logo-shell {
+      width: 94px;
+      height: 94px;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.03));
+      display: grid;
+      place-items: center;
+      box-shadow:
+        0 16px 40px rgba(0,0,0,.35),
+        inset 0 1px 0 rgba(255,255,255,.12);
+      flex: 0 0 auto;
+      overflow: hidden;
+    }
+
+    .logo-shell img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 20px rgba(215,15,28,.18));
+    }
+
+    .eyebrow {
+      margin: 0 0 6px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .34em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.52);
+    }
+
+    .brand-title {
+      margin: 0;
+      font-size: clamp(28px, 7vw, 48px);
+      line-height: .96;
+      letter-spacing: -.06em;
+      font-weight: 900;
+    }
+
+    .brand-title span {
+      display: block;
+      background: linear-gradient(90deg, #ffffff 0%, #4ade80 30%, #ffffff 52%, #ff3b3b 76%, #ffffff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-desc {
+      position: relative;
+      z-index: 2;
+      margin: 18px 0 0;
+      color: rgba(255,255,255,.74);
+      line-height: 1.75;
+      font-size: 15px;
+      max-width: 620px;
+    }
+
+    .chips {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .chip {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      color: rgba(255,255,255,.76);
+      font-weight: 800;
+      font-weight: 800;
+    }
+
+    .chip.free { box-shadow: inset 0 0 0 1px rgba(16,185,129,.14); }
+    .chip.vip { box-shadow: inset 0 0 0 1px rgba(215,15,28,.16); }
+
+    .mini-grid {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .mini-card {
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      padding: 16px;
+    }
+
+    .mini-card .k {
+      font-size: 10px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.46);
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .mini-card .v {
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255,255,255,.90);
+      font-weight: 700;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin: 22px 4px 14px;
+    }
+
+    .section-label .left {
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .34em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,.58);
+    }
+
+    .section-label .right {
+      font-size: 12px;
+      color: rgba(0,0,0,.56);
+    }
+
+    .stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .link-btn {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 92px;
+      padding: 18px 18px 18px 16px;
+      border-radius: 28px;
+      border: 1px solid rgba(0,0,0,.07);
+      background: linear-gradient(180deg, rgba(255,255,255,.99), rgba(250,250,250,.97));
+      box-shadow: 0 12px 34px rgba(0,0,0,.08);
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+      backdrop-filter: blur(14px);
+    }
+
+    .link-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 24px 70px rgba(0,0,0,.38);
+    }
+
+    .link-btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: .9;
+      pointer-events: none;
+    }
+
+    .link-btn.free::before {
+      background: linear-gradient(90deg, rgba(34,197,94,.16), transparent 34%, transparent 100%);
+    }
+
+    .link-btn.vip::before {
+      background: linear-gradient(90deg, rgba(255,30,45,.16), transparent 34%, transparent 100%);
+    }
+
+    .link-btn.mix::before {
+      background: linear-gradient(90deg, rgba(34,197,94,.10), rgba(255,255,255,0) 35%, rgba(255,30,45,.10) 100%);
+    }
+
+    .link-btn.social::before {
+      background: linear-gradient(180deg, rgba(0,0,0,.01), rgba(0,0,0,0));
+    }
+
+    .left-pack {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .icon-shell {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      border: 1px solid rgba(0,0,0,.07);
+      background: #ffffff;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      box-shadow: 0 8px 18px rgba(0,0,0,.06);
+      overflow: hidden;
+    }
+
+    .btn-logo {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .free .icon-shell { box-shadow: inset 0 0 0 1px rgba(16,185,129,.16); }
+    .vip .icon-shell { box-shadow: inset 0 0 0 1px rgba(215,15,28,.18); }
+    .mix .icon-shell { box-shadow: inset 0 0 0 1px rgba(255,255,255,.10); }
+
+    .txt {
+      min-width: 0;
+    }
+
+    .txt .over {
+      font-size: 10px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: rgba(0,0,0,.42);
+      margin-bottom: 6px;
+    }
+
+    .txt .title {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -.04em;
+      line-height: 1.06;
+      color: #0a0a0a;
+    }
+
+    .txt .sub {
+      margin-top: 6px;
+      color: rgba(0,0,0,.62);
+      line-height: 1.55;
+      font-size: 13px;
+    }
+
+    .arrow {
+      position: relative;
+      z-index: 2;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(0,0,0,.08);
+      background: #ffffff;
+      flex: 0 0 auto;
+      font-size: 18px;
+      color: rgba(0,0,0,.82);
+    }
+
+    .social-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .foot {
+      margin-top: 18px;
+      padding: 20px 18px;
+      border-radius: 24px;
+      border: 1px solid rgba(0,0,0,.07);
+      background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(250,250,250,.96));
+      color: rgba(0,0,0,.64);
+      font-size: 13px;
+      line-height: 1.75;
+      text-align: center;
+    }
+
+    .divider-visual {
+      height: 1px;
+      margin: 18px 0;
+      background: linear-gradient(90deg, rgba(16,185,129,.0), rgba(16,185,129,.28), rgba(255,255,255,.08), rgba(215,15,28,.28), rgba(215,15,28,.0));
+      border: 0;
+    }
+
+    @media (max-width: 640px) {
+      .wrap { padding-top: 18px; }
+      .hero-surface { padding: 18px; border-radius: 28px; }
+      .hero-duo, .mini-grid, .social-row { grid-template-columns: 1fr; }
+      .hero-access { min-height: 260px; border-radius: 24px; }
+      .link-btn { min-height: 86px; padding: 16px 16px 16px 14px; border-radius: 24px; }
+      .txt .title { font-size: 18px; }
+      .txt .sub { font-size: 12px; }
+      .icon-shell { width: 50px; height: 50px; border-radius: 16px; }
+      .arrow { width: 38px; height: 38px; }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="bg-orb orb-free"></div>
+  <div class="bg-orb orb-vip"></div>
 
-<div class="container">
+  <main class="wrap">
+    <section class="hero hero-clean">
+      <div class="hero-surface">
+        <div class="hero-topline">Nanonicoins</div>
+        <h1 class="hero-title-main">Escolha seu acesso</h1>
+        <p class="hero-subtitle">FREE e VIP com identidade própria, visual forte e entrada direta.</p>
 
-  <div class="header">
-    <div class="logo">
-      <img src="assets/logo-main.png">
-    </div>
-    <div>
-      <div class="title">Nanonicoins</div>
-      <div class="subtitle">Hub Oficial</div>
-    </div>
-  </div>
+        <div class="hero-duo">
+          <a class="hero-access hero-access-free" href="https://t.me/+pR5RzyPgUKY2NDZh" target="_blank" rel="noopener noreferrer">
+            <div class="hero-video-bg">
+              <video autoplay muted loop playsinline poster="assets/free-poster.jpg">
+                <source src="assets/free-video.mp4" type="video/mp4" />
+              </video>
+              <div class="hero-fx hero-fx-free"></div>
+            </div>
+            <div class="hero-access-content">
+              <div class="hero-access-logo"><img src="assets/logo-free.png" alt="Logo FREE" /></div>
+              <div class="hero-access-over">Nanonicoins Radar</div>
+              <div class="hero-access-title">FREE</div>
+              <div class="hero-access-text">Veja o radar funcionando ao vivo.</div>
+              <div class="hero-access-cta">Entrar agora →</div>
+            </div>
+          </a>
 
-  <!-- FREE -->
-  <a href="https://t.me/+pR5RzyPgUKY2NDZh">
-    <div class="card free">
-      <video autoplay muted loop playsinline>
-        <source src="assets/free-video.mp4">
-      </video>
-
-      <div class="content">
-        <div class="label">Nanonicoins Radar</div>
-        <div class="name">FREE</div>
-      </div>
-
-      <div class="arrow">→</div>
-    </div>
-  </a>
-
-  <!-- VIP -->
-  <a href="https://payment.ticto.app/O64599EB6">
-    <div class="card vip">
-      <video autoplay muted loop playsinline>
-        <source src="assets/vip-video.mp4">
-      </video>
-
-      <div class="content">
-        <div class="label">Nanonicoins VIP</div>
-        <div class="name">Founder Access</div>
-      </div>
-
-      <div class="arrow">→</div>
-    </div>
-  </a>
-
-  <!-- LANDINGS -->
-  <a href="https://lading-free.vercel.app/">
-    <div class="card">
-      <img src="assets/free-cover.jpg">
-
-      <div class="content">
-        <div class="label">Página</div>
-        <div class="name small">Landing FREE</div>
-      </div>
-
-      <div class="arrow">→</div>
-    </div>
-  </a>
-
-  <a href="https://nanonicoins-vip.vercel.app/">
-    <div class="card">
-      <img src="assets/vip-cover.jpg">
-
-      <div class="content">
-        <div class="label">Página</div>
-        <div class="name small">Landing VIP</div>
-      </div>
-
-      <div class="arrow">→</div>
-    </div>
-  </a>
-
-  <!-- SOCIAL -->
-  <div class="social">
-
-    <a href="https://www.instagram.com/nanoni.corp">
-      <div class="card">
-        <img src="assets/insta.jpg">
-        <div class="content">
-          <div class="name small">Instagram</div>
+          <a class="hero-access hero-access-vip" href="https://payment.ticto.app/O64599EB6" target="_blank" rel="noopener noreferrer">
+            <div class="hero-video-bg">
+              <video autoplay muted loop playsinline poster="assets/vip-poster.jpg">
+                <source src="assets/vip-video.mp4" type="video/mp4" />
+              </video>
+              <div class="hero-fx hero-fx-vip"></div>
+            </div>
+            <div class="hero-access-content">
+              <div class="hero-access-logo"><img src="assets/logo-vip.png" alt="Logo VIP" /></div>
+              <div class="hero-access-over">Nanonicoins VIP</div>
+              <div class="hero-access-title">Founder Access</div>
+              <div class="hero-access-text">Entre antes da maioria.</div>
+              <div class="hero-access-cta">Garantir acesso →</div>
+            </div>
+          </a>
         </div>
       </div>
-    </a>
+    </section>
 
-    <a href="https://www.tiktok.com/@nanonicorp">
-      <div class="card">
-        <img src="assets/tiktok.jpg">
-        <div class="content">
-          <div class="name small">TikTok</div>
+    <div class="section-label">
+      <div class="left">Links principais</div>
+      <div class="right">hub premium</div>
+    </div>
+
+    <section class="stack">
+      <a class="link-btn free" href="https://t.me/+pR5RzyPgUKY2NDZh" target="_blank" rel="noopener noreferrer">
+        <div class="left-pack">
+          <div class="icon-shell"><img src="assets/logo-free.png" alt="Logo FREE" class="btn-logo" /></div>
+          <div class="txt">
+            <div class="over">Nanonicoins Radar</div>
+            <div class="title">FREE</div>
+            <div class="sub">Veja o radar funcionando ao vivo.</div>
+          </div>
         </div>
-      </div>
-    </a>
+        <div class="arrow">→</div>
+      </a>
 
-  </div>
+      <a class="link-btn vip" href="https://payment.ticto.app/O64599EB6" target="_blank" rel="noopener noreferrer">
+        <div class="left-pack">
+          <div class="icon-shell"><img src="assets/logo-vip.png" alt="Logo VIP" class="btn-logo" /></div>
+          <div class="txt">
+            <div class="over">Nanonicoins VIP</div>
+            <div class="title">Founder Access</div>
+            <div class="sub">Entre antes da maioria.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+      </a>
 
-</div>
+      <a class="link-btn mix" href="#">
+        <div class="left-pack">
+          <div class="icon-shell"><img src="assets/logo.png" alt="Logo Nanonicoins" class="btn-logo" /></div>
+          <div class="txt">
+            <div class="over">Nanonicoins</div>
+            <div class="title">Resultados</div>
+            <div class="sub">Sinais reais. Interface real.</div>
+          </div>
+        </div>
+        <div class="arrow">+</div>
+      </a>
+    </section>
 
+    <hr class="divider-visual" />
+
+    <div class="section-label">
+      <div class="left">Social + tráfego</div>
+      <div class="right">Instagram e TikTok</div>
+    </div>
+
+    <section class="social-row">
+      <a class="link-btn social" href="https://www.instagram.com/nanoni.corp?igsh=MWc4Yjd2dHJmNjNraQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">
+        <div class="left-pack">
+          <div class="icon-shell">📸</div>
+          <div class="txt">
+            <div class="over">Social oficial</div>
+            <div class="title">Instagram</div>
+            <div class="sub">nanoni.corp</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+
+      <a class="link-btn social" href="https://www.tiktok.com/@nanonicorp?_r=1&_t=ZS-95BGMbmMe5F" target="_blank" rel="noopener noreferrer">
+        <div class="left-pack">
+          <div class="icon-shell">🎵</div>
+          <div class="txt">
+            <div class="over">Social oficial</div>
+            <div class="title">TikTok</div>
+            <div class="sub">@nanonicorp</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+    </section>
+
+    <div class="foot">
+      Nanonicoins Radar FREE • Nanonicoins VIP Founder Access • Instagram • TikTok
+    </div>
+  </main>
 </body>
 </html>
