@@ -23,53 +23,34 @@
       overflow-x:hidden;
     }
 
-    /* 🔥 CHUVA VERMELHA VISÍVEL MAS PREMIUM */
     .rain{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:0;
-  opacity:.35;
-
-  background-image:
-    linear-gradient(to bottom, rgba(255,40,40,0), rgba(255,40,40,.25), rgba(255,40,40,0)),
-    linear-gradient(to bottom, rgba(255,60,60,0), rgba(255,60,60,.18), rgba(255,60,60,0)),
-    linear-gradient(to bottom, rgba(255,30,30,0), rgba(255,30,30,.22), rgba(255,30,30,0)),
-    linear-gradient(to bottom, rgba(255,90,90,0), rgba(255,90,90,.14), rgba(255,90,90,0)),
-    linear-gradient(to bottom, rgba(255,50,50,0), rgba(255,50,50,.16), rgba(255,50,50,0)),
-    linear-gradient(to bottom, rgba(255,70,70,0), rgba(255,70,70,.12), rgba(255,70,70,0)),
-    linear-gradient(to bottom, rgba(255,40,40,0), rgba(255,40,40,.20), rgba(255,40,40,0)),
-    linear-gradient(to bottom, rgba(255,80,80,0), rgba(255,80,80,.10), rgba(255,80,80,0));
-
-  background-size:
-    2px 140px,
-    2px 160px,
-    2px 180px,
-    2px 200px,
-    2px 220px,
-    2px 240px,
-    2px 260px,
-    2px 300px;
-
-  background-position:
-    5% -200px,
-    12% -300px,
-    20% -250px,
-    32% -280px,
-    48% -320px,
-    62% -260px,
-    78% -300px,
-    90% -280px;
-
-  background-repeat: repeat-y;
-
-  animation: rainMove 4.5s linear infinite;
-}
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+      opacity:.18;
+      background-image:
+        linear-gradient(to bottom, rgba(255,40,40,0), rgba(255,40,40,.16), rgba(255,40,40,0)),
+        linear-gradient(to bottom, rgba(255,60,60,0), rgba(255,60,60,.12), rgba(255,60,60,0)),
+        linear-gradient(to bottom, rgba(255,30,30,0), rgba(255,30,30,.14), rgba(255,30,30,0)),
+        linear-gradient(to bottom, rgba(255,90,90,0), rgba(255,90,90,.08), rgba(255,90,90,0));
+      background-size:
+        2px 180px,
+        2px 220px,
+        2px 240px,
+        2px 280px;
+      background-position:
+        8% -240px,
+        31% -320px,
+        57% -260px,
+        83% -340px;
+      background-repeat: repeat-y;
+      animation: rainMove 5s linear infinite;
     }
 
     @keyframes rainMove{
       0%{
-        background-position: 8% -220px, 31% -320px, 57% -260px, 83% -340px;
+        background-position: 8% -240px, 31% -320px, 57% -260px, 83% -340px;
       }
       100%{
         background-position: 8% 900px, 31% 980px, 57% 940px, 83% 1020px;
@@ -99,10 +80,12 @@
       background:rgba(255,255,255,.05);
       display:grid;
       place-items:center;
+      flex-shrink:0;
     }
 
     .top-logo img{
       width:44px;
+      display:block;
     }
 
     .eyebrow{
@@ -116,11 +99,13 @@
     .title{
       font-size:34px;
       font-weight:900;
+      line-height:1.02;
     }
 
     .subtitle{
       color:rgba(255,255,255,.6);
       font-size:14px;
+      margin-top:4px;
     }
 
     .hero-shell{
@@ -128,6 +113,10 @@
       border-radius:34px;
       border:1px solid rgba(255,255,255,.1);
       background:rgba(255,255,255,.04);
+      box-shadow:
+        0 10px 40px rgba(0,0,0,.28),
+        inset 0 1px 0 rgba(255,255,255,.04);
+      backdrop-filter: blur(10px);
     }
 
     .stack{
@@ -141,6 +130,21 @@
       border-radius:30px;
       overflow:hidden;
       border:1px solid rgba(255,255,255,.08);
+      background:#080808;
+      display:block;
+      text-decoration:none;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.03),
+        0 16px 40px rgba(0,0,0,.28);
+      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+
+    .card:hover{
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.14);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.04),
+        0 20px 48px rgba(0,0,0,.34);
     }
 
     .card img{
@@ -149,42 +153,203 @@
       width:100%;
       height:100%;
       object-fit:cover;
+      display:block;
     }
 
     .card::after{
       content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(to top, rgba(0,0,0,.4), transparent);
+      background:
+        linear-gradient(to top, rgba(0,0,0,.22), rgba(0,0,0,.05) 36%, rgba(0,0,0,.08)),
+        linear-gradient(to right, rgba(0,0,0,.22), transparent 35%, transparent 65%, rgba(0,0,0,.14));
+      pointer-events:none;
     }
 
-    .card-ui{
+    .card-badge{
       position:absolute;
-      bottom:18px;
-      right:18px;
-      z-index:2;
+      top:16px;
+      left:16px;
+      z-index:3;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.1);
+      background:rgba(5,5,5,.68);
+      backdrop-filter: blur(10px);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:#fff;
+      box-shadow: 0 8px 24px rgba(0,0,0,.24);
     }
 
-    .arrow{
-      width:48px;
-      height:48px;
+    .card-badge::before{
+      content:"";
+      width:8px;
+      height:8px;
       border-radius:999px;
-      background:rgba(255,255,255,.1);
-      display:grid;
-      place-items:center;
-      font-size:20px;
+      background:#9ca3af;
+      box-shadow:0 0 10px currentColor;
+      flex-shrink:0;
+    }
+
+    .card-badge.free::before{
+      background:#22c55e;
+      color:#22c55e;
+    }
+
+    .card-badge.vip::before{
+      background:#ef4444;
+      color:#ef4444;
+    }
+
+    .card-badge.social-label::before{
+      background:#a855f7;
+      color:#a855f7;
     }
 
     .social{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:14px;
-      margin-top:14px;
+      margin-top:0;
+    }
+
+    .social-card{
+      min-height:168px;
+    }
+
+    .social-card::after{
+      background:
+        linear-gradient(to top, rgba(0,0,0,.28), rgba(0,0,0,.08) 40%, rgba(0,0,0,.08)),
+        linear-gradient(to right, rgba(0,0,0,.18), transparent 40%, transparent 60%, rgba(0,0,0,.12));
+    }
+
+    .social-icon-link{
+      position:absolute;
+      right:18px;
+      bottom:18px;
+      z-index:4;
+      width:54px;
+      height:54px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.1);
+      background:rgba(8,8,8,.62);
+      backdrop-filter: blur(12px);
+      display:grid;
+      place-items:center;
+      box-shadow: 0 12px 30px rgba(0,0,0,.28);
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .social-icon-link:hover{
+      transform: translateY(-2px) scale(1.02);
+      border-color: rgba(255,255,255,.18);
+      background:rgba(12,12,12,.78);
+    }
+
+    .social-icon-link img{
+      position:static;
+      inset:auto;
+      width:24px;
+      height:24px;
+      object-fit:contain;
+      display:block;
     }
 
     @media (max-width:640px){
+      .title{
+        font-size:30px;
+      }
+
+      .subtitle{
+        font-size:13px;
+      }
+
+      .card{
+        min-height:180px;
+        border-radius:26px;
+      }
+
       .social{
-        grid-template-columns:1fr;
+        grid-template-columns:1fr 1fr;
+      }
+
+      .social-card{
+        min-height:150px;
+      }
+
+      .social-icon-link{
+        width:50px;
+        height:50px;
+        border-radius:16px;
+      }
+    }
+
+    @media (max-width:520px){
+      .wrap{
+        width:min(100%, calc(100% - 18px));
+      }
+
+      .top{
+        gap:12px;
+      }
+
+      .top-logo{
+        width:56px;
+        height:56px;
+        border-radius:18px;
+      }
+
+      .top-logo img{
+        width:38px;
+      }
+
+      .title{
+        font-size:28px;
+      }
+
+      .hero-shell{
+        padding:12px;
+        border-radius:28px;
+      }
+
+      .card{
+        min-height:160px;
+        border-radius:24px;
+      }
+
+      .social{
+        grid-template-columns:1fr 1fr;
+        gap:12px;
+      }
+
+      .social-card{
+        min-height:136px;
+      }
+
+      .card-badge{
+        top:12px;
+        left:12px;
+        padding:8px 12px;
+        font-size:11px;
+      }
+
+      .social-icon-link{
+        right:12px;
+        bottom:12px;
+        width:46px;
+        height:46px;
+        border-radius:14px;
+      }
+
+      .social-icon-link img{
+        width:22px;
+        height:22px;
       }
     }
   </style>
@@ -198,46 +363,44 @@
 
     <section class="top">
       <div class="top-logo">
-        <img src="assets/logo-main.png">
+        <img src="assets/logo-main.png" alt="Logo NanoniCoins">
       </div>
       <div>
-        <div class="eyebrow">Nanonicoins</div>
+        <div class="eyebrow">NANONICOINS</div>
         <div class="title">Hub Oficial</div>
-        <div class="subtitle">NanoniCoins ◆ Free ◆ Founder Acess ◆ Redes Sociais.</div>
+        <div class="subtitle">NanoniCoins ◆ Free ◆ Founder Access ◆ Redes Sociais.</div>
       </div>
     </section>
 
     <section class="hero-shell">
       <div class="stack">
 
-        <a class="card" href="https://lading-free.vercel.app/">
-          <img src="assets/free-cover.jpg">
-          <div class="card-ui">
-            <div class="arrow">→</div>
-          </div>
+        <a class="card" href="https://lading-free.vercel.app/" target="_blank" rel="noopener noreferrer">
+          <span class="card-badge free">FREE</span>
+          <img src="assets/free-cover.jpg" alt="Free">
         </a>
 
-        <a class="card" href="https://nanonicoins-vip.vercel.app/">
-          <img src="assets/vip-cover.jpg">
-          <div class="card-ui">
-            <div class="arrow">→</div>
-          </div>
+        <a class="card" href="https://nanonicoins-vip.vercel.app/" target="_blank" rel="noopener noreferrer">
+          <span class="card-badge vip">VIP</span>
+          <img src="assets/vip-cover.jpg" alt="VIP">
         </a>
 
         <div class="social">
 
-          <a class="card" href="https://www.instagram.com/nanoni.corp">
-            <img src="assets/instagram-cover.jpg">
-            <div class="card-ui">
-              <div class="arrow">→</div>
-            </div>
+          <a class="card social-card" href="https://www.instagram.com/nanoni.corp" target="_blank" rel="noopener noreferrer">
+            <span class="card-badge social-label">REDES SOCIAIS</span>
+            <img src="assets/instagram-cover.jpg" alt="Instagram">
+            <span class="social-icon-link">
+              <img src="assets/instagram.png" alt="Instagram ícone">
+            </span>
           </a>
 
-          <a class="card" href="https://www.tiktok.com/@nanonicorp">
-            <img src="assets/tiktok-cover.jpg">
-            <div class="card-ui">
-              <div class="arrow">→</div>
-            </div>
+          <a class="card social-card" href="https://www.tiktok.com/@nanonicorp" target="_blank" rel="noopener noreferrer">
+            <span class="card-badge social-label">REDES SOCIAIS</span>
+            <img src="assets/tiktok-cover.jpg" alt="TikTok">
+            <span class="social-icon-link">
+              <img src="assets/tiktok.png" alt="TikTok ícone">
+            </span>
           </a>
 
         </div>
