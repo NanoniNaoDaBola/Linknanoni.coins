@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nanonicorp Hub</title>
+  <title>NanoniCoins Hub</title>
 
   <style>
     *{
@@ -11,16 +11,42 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    body{
+    :root{
+      --bg-0:#040404;
+      --bg-1:#080808;
+      --bg-2:#0d0d0d;
+      --line:rgba(255,255,255,.08);
+      --line-strong:rgba(255,255,255,.14);
+      --text-soft:rgba(255,255,255,.58);
+      --green:#43ff86;
+      --green-soft:rgba(67,255,134,.22);
+      --red:#ff5a5a;
+      --red-soft:rgba(255,90,90,.22);
+    }
+
+    html,body{
       margin:0;
+      min-height:100%;
       font-family: Inter, sans-serif;
       color:#fff;
       background:
-        radial-gradient(circle at 50% -10%, rgba(255,255,255,.05), transparent 28%),
-        radial-gradient(circle at 0% 0%, rgba(255,255,255,.02), transparent 24%),
-        radial-gradient(circle at 100% 0%, rgba(255,255,255,.02), transparent 24%),
-        linear-gradient(180deg, #050505 0%, #090909 50%, #050505 100%);
+        radial-gradient(circle at 50% -12%, rgba(255,255,255,.06), transparent 26%),
+        radial-gradient(circle at 20% 0%, rgba(255,255,255,.025), transparent 20%),
+        radial-gradient(circle at 80% 0%, rgba(255,255,255,.025), transparent 20%),
+        linear-gradient(180deg, #030303 0%, #070707 48%, #030303 100%);
       overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+      background:
+        radial-gradient(circle at 50% 22%, rgba(255,255,255,.025), transparent 22%),
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,.02), transparent 34%);
+      mix-blend-mode:screen;
     }
 
     .rain{
@@ -28,11 +54,11 @@
       inset:0;
       pointer-events:none;
       z-index:0;
-      opacity:.16;
+      opacity:.15;
       background-image:
-        linear-gradient(to bottom, rgba(255,40,40,0), rgba(255,40,40,.14), rgba(255,40,40,0)),
+        linear-gradient(to bottom, rgba(255,40,40,0), rgba(255,40,40,.16), rgba(255,40,40,0)),
         linear-gradient(to bottom, rgba(255,60,60,0), rgba(255,60,60,.10), rgba(255,60,60,0)),
-        linear-gradient(to bottom, rgba(255,30,30,0), rgba(255,30,30,.12), rgba(255,30,30,0)),
+        linear-gradient(to bottom, rgba(255,30,30,0), rgba(255,30,30,.13), rgba(255,30,30,0)),
         linear-gradient(to bottom, rgba(255,90,90,0), rgba(255,90,90,.07), rgba(255,90,90,0));
       background-size:
         2px 180px,
@@ -45,7 +71,7 @@
         57% -260px,
         83% -340px;
       background-repeat: repeat-y;
-      animation: rainMove 5s linear infinite;
+      animation: rainMove 5.2s linear infinite;
     }
 
     @keyframes rainMove{
@@ -53,14 +79,14 @@
         background-position: 8% -240px, 31% -320px, 57% -260px, 83% -340px;
       }
       100%{
-        background-position: 8% 900px, 31% 980px, 57% 940px, 83% 1020px;
+        background-position: 8% 940px, 31% 1000px, 57% 960px, 83% 1040px;
       }
     }
 
     .wrap{
-      width:min(860px, calc(100% - 28px));
+      width:min(900px, calc(100% - 28px));
       margin:0 auto;
-      padding:28px 0 42px;
+      padding:34px 0 46px;
       position:relative;
       z-index:2;
     }
@@ -68,86 +94,134 @@
     .top{
       display:flex;
       align-items:center;
-      gap:14px;
-      margin-bottom:18px;
+      gap:16px;
+      margin-bottom:20px;
+      position:relative;
+    }
+
+    .top::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:-12px;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent);
+      opacity:.7;
     }
 
     .top-logo{
-      width:64px;
-      height:64px;
-      border-radius:20px;
-      border:1px solid rgba(255,255,255,.1);
-      background:rgba(255,255,255,.05);
+      width:66px;
+      height:66px;
+      border-radius:21px;
+      border:1px solid rgba(255,255,255,.09);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
       display:grid;
       place-items:center;
       flex-shrink:0;
       box-shadow:
         inset 0 1px 0 rgba(255,255,255,.04),
-        0 10px 30px rgba(0,0,0,.24);
+        0 12px 34px rgba(0,0,0,.26);
+      backdrop-filter: blur(10px);
     }
 
     .top-logo img{
       width:44px;
       display:block;
+      filter: drop-shadow(0 0 10px rgba(255,0,0,.08));
     }
 
     .eyebrow{
       font-size:11px;
-      letter-spacing:.34em;
+      letter-spacing:.36em;
       text-transform:uppercase;
-      color:rgba(255,255,255,.38);
+      color:rgba(255,255,255,.34);
       font-weight:800;
+      margin-bottom:2px;
     }
 
     .title{
       font-size:34px;
       font-weight:900;
       line-height:1.02;
+      letter-spacing:-.03em;
     }
 
     .subtitle{
-      color:rgba(255,255,255,.55);
+      color:rgba(255,255,255,.58);
       font-size:14px;
-      margin-top:4px;
+      margin-top:5px;
+      letter-spacing:.01em;
     }
 
     .hero-shell{
-      padding:16px;
-      border-radius:34px;
-      border:1px solid rgba(255,255,255,.1);
-      background:rgba(255,255,255,.04);
+      position:relative;
+      padding:18px;
+      border-radius:36px;
+      border:1px solid rgba(255,255,255,.09);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.025));
       box-shadow:
-        0 10px 40px rgba(0,0,0,.28),
+        0 18px 60px rgba(0,0,0,.32),
         inset 0 1px 0 rgba(255,255,255,.04);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
+      overflow:hidden;
+    }
+
+    .hero-shell::before{
+      content:"";
+      position:absolute;
+      inset:-20% -10%;
+      background:
+        radial-gradient(circle at 50% 28%, rgba(255,255,255,.035), transparent 24%),
+        radial-gradient(circle at 50% 110%, rgba(255,255,255,.02), transparent 30%);
+      pointer-events:none;
     }
 
     .stack{
+      position:relative;
       display:grid;
-      gap:16px;
+      gap:18px;
+      z-index:1;
     }
 
     .card{
       position:relative;
       min-height:220px;
-      border-radius:30px;
+      border-radius:32px;
       overflow:hidden;
-      border:1px solid rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.07);
       background:#080808;
       display:block;
       text-decoration:none;
       box-shadow:
         inset 0 1px 0 rgba(255,255,255,.03),
-        0 16px 40px rgba(0,0,0,.28);
-      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+        0 16px 42px rgba(0,0,0,.28);
+      transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease,
+        filter .3s ease;
+      animation: floatCard 6s ease-in-out infinite;
+    }
+
+    .card:nth-child(2){
+      animation-delay: .6s;
+    }
+
+    @keyframes floatCard{
+      0%,100%{ transform: translateY(0px); }
+      50%{ transform: translateY(-3px); }
     }
 
     .card:hover{
-      transform: translateY(-2px);
+      transform: translateY(-4px) scale(1.008);
       border-color: rgba(255,255,255,.14);
       box-shadow:
         inset 0 1px 0 rgba(255,255,255,.04),
-        0 22px 52px rgba(0,0,0,.34);
+        0 24px 62px rgba(0,0,0,.36);
+      filter:saturate(1.04);
     }
 
     .card img{
@@ -157,8 +231,8 @@
       height:100%;
       object-fit:cover;
       display:block;
-      transform: scale(1.08);
       transform-origin:center;
+      transition: transform .45s ease, filter .45s ease;
     }
 
     .free-card img{
@@ -166,7 +240,12 @@
     }
 
     .vip-card img{
-      transform: scale(1.1);
+      transform: scale(1.10);
+    }
+
+    .card:hover img{
+      transform: scale(1.145);
+      filter: contrast(1.03) brightness(1.02);
     }
 
     .card::after{
@@ -174,9 +253,35 @@
       position:absolute;
       inset:0;
       background:
-        linear-gradient(to top, rgba(0,0,0,.16), rgba(0,0,0,.02) 42%, rgba(0,0,0,.06)),
+        linear-gradient(to top, rgba(0,0,0,.15), rgba(0,0,0,.02) 42%, rgba(0,0,0,.05)),
         linear-gradient(to right, rgba(0,0,0,.10), transparent 34%, transparent 66%, rgba(0,0,0,.10));
       pointer-events:none;
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:auto 0 0 0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.09), transparent);
+      pointer-events:none;
+      z-index:2;
+    }
+
+    .free-card:hover{
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.04),
+        0 0 0 1px rgba(67,255,134,.06),
+        0 16px 42px rgba(0,0,0,.32),
+        0 0 32px rgba(67,255,134,.08);
+    }
+
+    .vip-card:hover{
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.04),
+        0 0 0 1px rgba(255,90,90,.06),
+        0 16px 42px rgba(0,0,0,.32),
+        0 0 34px rgba(255,90,90,.08);
     }
 
     .section-tag{
@@ -186,33 +291,43 @@
       z-index:3;
       font-size:14px;
       font-weight:900;
-      letter-spacing:.28em;
+      letter-spacing:.34em;
       text-transform:uppercase;
-      text-shadow: 0 0 10px rgba(255,255,255,.06);
+      text-shadow: 0 0 10px rgba(255,255,255,.05);
+      transition: transform .25s ease, opacity .25s ease;
+    }
+
+    .card:hover .section-tag{
+      transform: translateY(-1px);
     }
 
     .section-tag.free{
       color:#7dff9d;
       text-shadow:
-        0 0 14px rgba(34,197,94,.2),
-        0 0 26px rgba(34,197,94,.08);
+        0 0 14px rgba(34,197,94,.22),
+        0 0 28px rgba(34,197,94,.08);
     }
 
     .section-tag.vip{
-      color:#ff7a7a;
+      color:#ff7d7d;
       text-shadow:
         0 0 14px rgba(239,68,68,.22),
-        0 0 26px rgba(239,68,68,.08);
+        0 0 28px rgba(239,68,68,.08);
     }
 
     .section-tag::after{
       content:"";
       display:block;
-      width:36px;
+      width:34px;
       height:2px;
-      margin-top:7px;
+      margin-top:8px;
       border-radius:999px;
       opacity:.9;
+      transition: width .25s ease;
+    }
+
+    .card:hover .section-tag::after{
+      width:48px;
     }
 
     .section-tag.free::after{
@@ -226,14 +341,14 @@
     .social-row{
       display:flex;
       justify-content:center;
-      gap:16px;
-      margin-top:4px;
+      gap:18px;
+      margin-top:2px;
     }
 
     .social-row a{
-      width:46px;
-      height:46px;
-      border-radius:15px;
+      width:48px;
+      height:48px;
+      border-radius:16px;
       background:rgba(0,0,0,.62);
       backdrop-filter: blur(10px);
       display:flex;
@@ -243,27 +358,50 @@
       box-shadow:
         inset 0 1px 0 rgba(255,255,255,.03),
         0 12px 30px rgba(0,0,0,.22);
-      transition:.2s ease;
+      transition:.24s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .social-row a::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      opacity:0;
+      transition:opacity .24s ease;
+      pointer-events:none;
     }
 
     .social-row a:hover{
-      transform: translateY(-1px) scale(1.08);
+      transform: translateY(-2px) scale(1.09);
       border-color: rgba(255,255,255,.18);
-      background:rgba(8,8,8,.82);
+      background:rgba(8,8,8,.84);
     }
 
     .social-row a.instagram:hover{
       box-shadow:
-        0 0 0 1px rgba(255,255,255,.06),
-        0 0 16px rgba(255,84,146,.18),
+        0 0 0 1px rgba(255,255,255,.05),
+        0 0 18px rgba(255,84,146,.18),
         0 12px 30px rgba(0,0,0,.22);
+    }
+
+    .social-row a.instagram::before{
+      background: radial-gradient(circle at 50% 50%, rgba(255,84,146,.18), transparent 65%);
     }
 
     .social-row a.tiktok:hover{
       box-shadow:
-        0 0 0 1px rgba(255,255,255,.06),
-        0 0 16px rgba(34,211,238,.18),
+        0 0 0 1px rgba(255,255,255,.05),
+        0 0 18px rgba(34,211,238,.18),
         0 12px 30px rgba(0,0,0,.22);
+    }
+
+    .social-row a.tiktok::before{
+      background: radial-gradient(circle at 50% 50%, rgba(34,211,238,.18), transparent 65%);
+    }
+
+    .social-row a:hover::before{
+      opacity:1;
     }
 
     .social-row img{
@@ -271,9 +409,15 @@
       height:22px;
       object-fit:contain;
       display:block;
+      position:relative;
+      z-index:1;
     }
 
-    @media (max-width:640px){
+    @media (max-width:720px){
+      .wrap{
+        width:min(100%, calc(100% - 20px));
+      }
+
       .title{
         font-size:30px;
       }
@@ -284,7 +428,7 @@
 
       .card{
         min-height:190px;
-        border-radius:26px;
+        border-radius:28px;
       }
 
       .section-tag{
@@ -294,7 +438,8 @@
 
     @media (max-width:520px){
       .wrap{
-        width:min(100%, calc(100% - 18px));
+        width:min(100%, calc(100% - 16px));
+        padding-top:22px;
       }
 
       .top{
@@ -321,7 +466,7 @@
       }
 
       .card{
-        min-height:170px;
+        min-height:168px;
         border-radius:24px;
       }
 
@@ -331,10 +476,14 @@
         font-size:12px;
       }
 
+      .social-row{
+        gap:14px;
+      }
+
       .social-row a{
-        width:42px;
-        height:42px;
-        border-radius:13px;
+        width:44px;
+        height:44px;
+        border-radius:14px;
       }
 
       .social-row img{
@@ -346,7 +495,6 @@
 </head>
 
 <body>
-
   <div class="rain"></div>
 
   <main class="wrap">
@@ -355,10 +503,11 @@
       <div class="top-logo">
         <img src="assets/logo-main.png" alt="Logo NanoniCoins">
       </div>
+
       <div>
         <div class="eyebrow">NANONICOINS</div>
         <div class="title">Hub Oficial</div>
-        <div class="subtitle">Free & VIP Access</div>
+        <div class="subtitle">Radar Access • Free & VIP</div>
       </div>
     </section>
 
@@ -389,6 +538,5 @@
     </section>
 
   </main>
-
 </body>
 </html>
